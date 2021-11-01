@@ -6,8 +6,6 @@ import type { IncomingMessage } from "http";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 export type Action = (this: ActionResponse, req: IncomingMessage) => Response;
 
 export type Response = Promise<Rejected | Redirect | Accepted | Respond>;
@@ -43,15 +41,11 @@ type Respond = {
 
 export type RedirectType = "PERMANENT" | "TEMPORARY";
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Responses
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 export function redirect(url: string, type: RedirectType = "PERMANENT"): Redirect {
   return {
@@ -82,5 +76,3 @@ export function respond(data?: any): Respond {
     data
   };
 }
-
-//#endregion

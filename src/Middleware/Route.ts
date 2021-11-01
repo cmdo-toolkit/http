@@ -10,8 +10,6 @@ import type { Middleware } from "../Types";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 export function route(router: Router): Middleware {
   return async (req: IncomingMessage, res: ServerResponse) => {
     try {
@@ -42,15 +40,11 @@ export function route(router: Router): Middleware {
   };
 }
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Utilities
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 function handleRedirect(res: ServerResponse, result: HttpRedirect): void {
   res.writeHead(result.code, { location: result.url });
@@ -68,5 +62,3 @@ function handleResponse(res: ServerResponse, result: HttpSuccess | HttpError): v
   res.statusCode = result.code;
   res.write(JSON.stringify(result.toJSON()));
 }
-
-//#endregion

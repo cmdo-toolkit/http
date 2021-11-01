@@ -8,8 +8,6 @@ import { Middleware } from "../Types";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 export function getRequestListener(middleware: Middleware[] = []): http.RequestListener {
   return async function (req: http.IncomingMessage, res: http.ServerResponse) {
     for (const handle of middleware) {
@@ -23,5 +21,3 @@ export function getRequestListener(middleware: Middleware[] = []): http.RequestL
     }
   };
 }
-
-//#endregion

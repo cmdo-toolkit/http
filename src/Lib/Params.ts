@@ -6,22 +6,16 @@ import type { RequestState } from "../Types";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 export type Parameter = {
   name: string;
   value?: string;
 };
-
-//#endregion
 
 /*
  |--------------------------------------------------------------------------------
  | Utilities
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 export function parseParams(path: string): Parameter[] {
   return path.split("/").reduce((list: Parameter[], next: string) => {
@@ -42,5 +36,3 @@ export function getParams(params: Parameter[], match: any): RequestState {
   });
   return result;
 }
-
-//#endregion

@@ -6,8 +6,6 @@ type Query = Record<string, string>;
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 export function getQuery(search = ""): Query {
   const query: Query = {};
   if (search) {
@@ -21,5 +19,3 @@ export function getQuery(search = ""): Query {
   }
   return query;
 }
-
-//#endregion

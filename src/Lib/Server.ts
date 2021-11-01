@@ -9,10 +9,6 @@ import { getRequestListener } from "./Listener";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 export function server(middleware: Middleware[] = []): http.Server {
   return http.createServer(getRequestListener(middleware));
 }
-
-//#endregion

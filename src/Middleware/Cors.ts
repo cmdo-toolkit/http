@@ -17,23 +17,17 @@ import type { Middleware } from "../Types";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 type Options = {
   origin: string;
   methods: string;
   optionsSuccessStatus: number;
 };
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Cors
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 export function cors(options: Options = defaultOptions()): Middleware {
   return async (req: IncomingMessage, res: ServerResponse) => {
@@ -65,15 +59,11 @@ export function cors(options: Options = defaultOptions()): Middleware {
   };
 }
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Configurations
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 function configureOrigin(options: any, req: IncomingMessage) {
   const requestOrigin = req.headers.origin;
@@ -202,15 +192,11 @@ function configureExposedHeaders(options: any) {
   return null;
 }
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Utilities
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 function defaultOptions(): Options {
   return {
@@ -247,5 +233,3 @@ function applyHeaders(headers: any, res: ServerResponse): void {
     }
   }
 }
-
-//#endregion

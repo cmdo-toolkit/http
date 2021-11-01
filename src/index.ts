@@ -6,8 +6,6 @@ import type { RequestBody, RequestState } from "./Types";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 declare module "http" {
   interface IncomingMessage {
     params: RequestState;
@@ -16,15 +14,11 @@ declare module "http" {
   }
 }
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Exports
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 export * from "./Lib/Action";
 export * from "./Lib/Listener";
@@ -35,5 +29,3 @@ export * from "./Lib/Server";
 export * from "./Middleware/Cors";
 export * from "./Middleware/Route";
 export * from "./Types/Middleware";
-
-//#endregion

@@ -7,8 +7,6 @@ import type { RedirectType } from "./Action";
  |--------------------------------------------------------------------------------
  */
 
-//#region
-
 abstract class HttpResponse {
   public status: HttpStatus;
 
@@ -17,15 +15,11 @@ abstract class HttpResponse {
   }
 }
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Success
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 export class HttpSuccess extends HttpResponse {
   public readonly status = "success" as const;
@@ -52,15 +46,11 @@ export class HttpSuccess extends HttpResponse {
   }
 }
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Redirect
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 export class HttpRedirect extends HttpResponse {
   public readonly status = "redirect" as const;
@@ -105,15 +95,11 @@ export class HttpRedirect extends HttpResponse {
   }
 }
 
-//#endregion
-
 /*
  |--------------------------------------------------------------------------------
  | Error
  |--------------------------------------------------------------------------------
  */
-
-//#region
 
 export class HttpError extends HttpResponse {
   public readonly status = "error" as const;
@@ -145,5 +131,3 @@ export class HttpError extends HttpResponse {
     };
   }
 }
-
-//#endregion
