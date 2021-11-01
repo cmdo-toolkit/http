@@ -61,23 +61,17 @@ export class Router {
    |--------------------------------------------------------------------------------
    */
 
-  //#region
-
   public register(routes: Route[]) {
     for (const route of routes) {
       this.routes[route.method].push(route);
     }
   }
 
-  //#endregion
-
   /*
    |--------------------------------------------------------------------------------
    | Resolver
    |--------------------------------------------------------------------------------
    */
-
-  //#region
 
   public async resolve(message: IncomingMessage): Promise<HttpSuccess | HttpRedirect | HttpError> {
     if (!message.url || !message.method) {
@@ -119,15 +113,11 @@ export class Router {
     return new HttpSuccess();
   }
 
-  //#endregion
-
   /*
    |--------------------------------------------------------------------------------
    | Utilities
    |--------------------------------------------------------------------------------
    */
-
-  //#region
 
   /**
    * Parse the incoming request body.
@@ -137,21 +127,11 @@ export class Router {
    * @returns Parsed http body
    */
   public async body(req: IncomingMessage): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const data: any = [];
-
-      req.on("data", (chunk) => {
-        data.push(chunk);
-      });
-
-      req.on("error", (err) => {
-        reject(err);
-      });
-
-      req.on("end", () => {
-        resolve(JSON.parse(data));
-      });
-    });
+    const buffers = [];
+    for await (const chunk of req) {
+      buffers.push(chunk);
+    }
+    return JSON.parse(Buffer.concat(buffers).toString());
   }
 
   /**
@@ -170,6 +150,4 @@ export class Router {
       }
     }
   }
-
-  //#endregion
 }
